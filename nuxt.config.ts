@@ -27,9 +27,13 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2025-01-15',
 
-  // vite: {
-  //   logLevel: 'warn'
-  // },
+  nitro: {
+    preset: 'cloudflare-pages'
+  },
+
+  vite: {
+    logLevel: 'info'
+  },
 
   // debug: true,
 
@@ -62,7 +66,7 @@ export default defineNuxtConfig({
     cookieOptions: {
       maxAge: 60 * 60 * 8,
       sameSite: 'lax',
-      secure: false
+      secure: process.env.NODE_ENV === 'production'
     }
   }
 })
